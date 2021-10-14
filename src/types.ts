@@ -27,6 +27,16 @@ export type ArenaEmbed = {
   html: string
 }
 
+export function getImage(
+  item: ArenaContent,
+  key: 'thumb' | 'square' | 'display' | 'large' | 'original',
+) {
+  return (
+    item.image?.[key].url ??
+    `https://dev.are.na/assets/arena-mark-a778d5c8fca2b357f25a704124ac568d2c22bc994936c857623d61ac17596e91.svg`
+  )
+}
+
 export type ArenaContent = {
   id: number
   generated_title: string
@@ -47,7 +57,7 @@ export type ArenaContent = {
   connected_by_user_id: number
   connected_by_username: string
   connected_by_user_slug: string
-  source: {
+  source: null | {
     url: string
     title: string
     provider: {
