@@ -19,8 +19,10 @@ const Toolbar = styled('div', {
 })
 
 function App({}: AppProps) {
+  // Obviously will want this to be configurable later
   const [collection, setCollection] = useState(
-    chooseFrom(['pixels-rgcrxrag5wi', 'ui-hppcfhx_xyi', 'wow-rw4ams2g0tq']),
+    chooseFrom(['pixels-rgcrxrag5wi', 'ui-hppcfhx_xyi', 'wow-rw4ams2g0tq']) ??
+      'wow-rw4ams2g0tq',
   )
 
   return (
