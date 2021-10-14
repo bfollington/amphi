@@ -4,6 +4,7 @@ import './App.css'
 import CollectionList from './CollectionList'
 import ArenaContentItem from './ArenaBlock'
 import { styled } from '@stitches/react'
+import { chooseFrom } from './array'
 
 interface AppProps {}
 
@@ -18,7 +19,9 @@ const Toolbar = styled('div', {
 })
 
 function App({}: AppProps) {
-  const [collection, setCollection] = useState('wow-rw4ams2g0tq')
+  const [collection, setCollection] = useState(
+    chooseFrom(['pixels-rgcrxrag5wi', 'ui-hppcfhx_xyi', 'wow-rw4ams2g0tq']),
+  )
 
   return (
     <div className="App">
