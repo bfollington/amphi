@@ -10,7 +10,6 @@ type Props = {
 const ContentWrapper = styled('div', {
   position: 'relative',
   display: 'inline-block',
-  height: '75%',
 })
 
 const InfoButton = styled('button', {
@@ -62,6 +61,15 @@ const MetadataItem = ({
   </>
 )
 
+const ContentImage = styled('div', {
+  backgroundSize: 'contain',
+  backgroundColor: 'transparent',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center center',
+  height: '85vh',
+  width: '90vw',
+})
+
 const ContentItem = ({ item }: Props) => {
   const [infoVisible, setInfoVisible] = useState(false)
 
@@ -73,7 +81,9 @@ const ContentItem = ({ item }: Props) => {
       placeholder={<div style={{ height: '75%', backgroundColor: 'blue' }} />}
     >
       <ContentWrapper>
-        <img src={getImage(item, 'original')} alt={item.generated_title} />
+        <ContentImage
+          css={{ backgroundImage: `url(${getImage(item, 'original')})` }}
+        />
         <InfoButton onClick={() => setInfoVisible(true)}>info</InfoButton>
         {infoVisible && (
           <InfoPanel>

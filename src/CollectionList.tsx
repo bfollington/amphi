@@ -31,6 +31,7 @@ const Wrapper = styled('div', {
 
 const FocusItem = styled('div', {
   background: 'rgba(255, 255, 255, 0.75)',
+  backdropFilter: `blur(5px)`,
   position: 'fixed',
   top: 0,
   left: 0,
