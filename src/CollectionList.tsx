@@ -108,47 +108,29 @@ const CollectionList = ({ id }: Props) => {
         <Button onClick={onPrev}>← prev</Button>
         <Button onClick={onNext}>next →</Button>
       </FocusItem>
-      <Masonry className="arena-masonry-grid" breakpointCols={4}>
+      <Masonry className="arena-masonry-grid" breakpointCols={5}>
         {data.contents.map((c) => (
           <LazyLoad
             key={c.id}
-            height={200}
+            height={320}
             once
             unmountIfInvisible
             placeholder={
               <img
                 src={getImage(c, 'thumb')}
-                height={200}
+                height={320}
                 alt={c.generated_title}
               />
             }
           >
             <img
               src={getImage(c, 'original')}
-              height={200}
+              height={320}
               alt={c.generated_title}
             />
           </LazyLoad>
         ))}
       </Masonry>
-      {/* {data.contents.map((c) => (
-        <li key={c.id}>
-          <LazyLoad
-            height={200}
-            once
-            unmountIfInvisible
-            placeholder={
-              <img
-                src={c.image.thumb.url}
-                height={200}
-                alt={c.generated_title}
-              />
-            }
-          >
-            <img src={c.image.large.url} height={200} alt={c.generated_title} />
-          </LazyLoad>
-        </li>
-      ))} */}
     </Wrapper>
   )
 }
