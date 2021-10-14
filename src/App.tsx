@@ -25,8 +25,12 @@ const Toolbar = styled('div', {
 function App({}: AppProps) {
   // Obviously will want this to be configurable later
   const [collection, setCollection] = useState(
-    chooseFrom(['pixels-rgcrxrag5wi', 'ui-hppcfhx_xyi', 'wow-rw4ams2g0tq']) ??
+    chooseFrom([
+      'pixels-rgcrxrag5wi',
+      'ui-hppcfhx_xyi',
       'wow-rw4ams2g0tq',
+      'generative-inspo',
+    ]) ?? 'wow-rw4ams2g0tq',
   )
 
   return (
@@ -50,6 +54,7 @@ function App({}: AppProps) {
           <option value="pixels-rgcrxrag5wi">pixels-rgcrxrag5wi</option>
           <option value="three-dee-jzsij8qmbvo">three-dee-jzsij8qmbvo</option>
           <option value="ui-hppcfhx_xyi">ui-hppcfhx_xyi</option>
+          <option value="generative-inspo">generative-inspo</option>
         </select>
         <a href="https://github.com/bfollington/amphi">
           <img width={32} height={32} src={github} />
