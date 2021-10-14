@@ -5,6 +5,7 @@ import CollectionList from './CollectionList'
 import ArenaContentItem from './ArenaBlock'
 import { styled } from '@stitches/react'
 import { chooseFrom } from './array'
+import github from './assets/GitHub-Mark-32px.png'
 
 interface AppProps {}
 
@@ -16,6 +17,9 @@ const Toolbar = styled('div', {
   left: 0,
   right: 0,
   height: '32px',
+  display: 'flex',
+
+  justifyContent: 'space-between',
 })
 
 function App({}: AppProps) {
@@ -30,11 +34,13 @@ function App({}: AppProps) {
       {/* <ArenaContentItem id="13434578" /> */}
       <CollectionList id={collection} />
       <Toolbar>
-        <img
-          src="https://dev.are.na/assets/arena-mark-a778d5c8fca2b357f25a704124ac568d2c22bc994936c857623d61ac17596e91.svg"
-          width={32}
-          height={32}
-        />
+        <a href="https://www.are.na/ben-follington">
+          <img
+            src="https://dev.are.na/assets/arena-mark-a778d5c8fca2b357f25a704124ac568d2c22bc994936c857623d61ac17596e91.svg"
+            width={32}
+            height={32}
+          />
+        </a>
         <select
           value={collection}
           onChange={(e) => setCollection(e.target.value)}
@@ -45,6 +51,9 @@ function App({}: AppProps) {
           <option value="three-dee-jzsij8qmbvo">three-dee-jzsij8qmbvo</option>
           <option value="ui-hppcfhx_xyi">ui-hppcfhx_xyi</option>
         </select>
+        <a href="https://github.com/bfollington/amphi">
+          <img width={32} height={32} src={github} />
+        </a>
       </Toolbar>
     </div>
   )
