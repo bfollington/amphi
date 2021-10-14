@@ -6,6 +6,8 @@ import ContentItem from './ContentItem'
 import Masonry from 'react-masonry-css'
 import { styled } from '@stitches/react'
 import { shuffle } from './array'
+import KEYS from 'use-control/lib/keys'
+import { keycode, useButtonPressed } from 'use-control/lib'
 
 type Props = {
   id: string
@@ -20,6 +22,7 @@ type PlaceholderProps = {
 const Wrapper = styled('div', {
   position: 'relative',
   '.arena-masonry-grid': {
+    overflowX: 'hidden',
     display: 'flex',
     // marginLeft: '-30px',
     width: 'auto',
@@ -48,6 +51,14 @@ const Button = styled('button', {
   padding: `0.65625em 1em`,
 })
 
+const inputMap = {
+  buttons: {
+    left: [keycode(KEYS.left_arrow), keycode(KEYS.h)],
+    right: [keycode(KEYS.right_arrow), keycode(KEYS.l)],
+  },
+  axes: {},
+}
+
 const CollectionList = ({ id }: Props) => {
   const { data, isLoading, error } = useQuery<ArenaCollectionResponse, Error>(
     ['collection', id],
@@ -63,6 +74,7 @@ const CollectionList = ({ id }: Props) => {
     () => shuffle([...Array(items)].map((_, idx) => idx)),
     [items],
   )
+
   const onNext = useCallback(() => {
     let next = focused + 1
     if (next >= items) {
@@ -70,6 +82,7 @@ const CollectionList = ({ id }: Props) => {
     }
     setFocused(next)
   }, [setFocused, focused, items])
+
   const onPrev = useCallback(() => {
     let next = focused - 1
     if (next < 0) {
@@ -77,6 +90,9 @@ const CollectionList = ({ id }: Props) => {
     }
     setFocused(next)
   }, [setFocused, focused, items])
+
+  useButtonPressed(inputMap, 'left', onPrev)
+  useButtonPressed(inputMap, 'right', onNext)
 
   if (isLoading) return <span>Loading...</span>
 
