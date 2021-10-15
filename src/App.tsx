@@ -22,15 +22,29 @@ const Toolbar = styled('div', {
   justifyContent: 'space-between',
 })
 
+const initialCollections = [
+  'pixels-rgcrxrag5wi',
+  'ui-hppcfhx_xyi',
+  'wow-rw4ams2g0tq',
+  'generative-inspo',
+  'sci-fi-garden',
+  'cyberpunk-zqoewae0qp8',
+  'fantasy-fvi_ezooajc',
+  'melancholy-m0xf7v4gvzm',
+  'japan-wwtzlgipuso',
+  'city-hec7ay_fyr0',
+  'surreal-rlgxe03_dtu',
+  'worlds-mlh7zp-nyeu',
+  'industrial-mtzcq5xkosu',
+  'solarpunk-3e3qwrnktcq',
+  'famicase-dx3k-8ctcwk',
+]
+const allCollections = [...initialCollections, 'soundtrack-to-my-life']
+
 function App({}: AppProps) {
   // Obviously will want this to be configurable later
   const [collection, setCollection] = useState(
-    chooseFrom([
-      'pixels-rgcrxrag5wi',
-      'ui-hppcfhx_xyi',
-      'wow-rw4ams2g0tq',
-      'generative-inspo',
-    ]) ?? 'wow-rw4ams2g0tq',
+    chooseFrom(initialCollections) ?? initialCollections[0],
   )
 
   return (
@@ -49,12 +63,11 @@ function App({}: AppProps) {
           value={collection}
           onChange={(e) => setCollection(e.target.value)}
         >
-          <option value="soundtrack-to-my-life">soundtrack-to-my-life</option>
-          <option value="wow-rw4ams2g0tq">wow-rw4ams2g0tq</option>
-          <option value="pixels-rgcrxrag5wi">pixels-rgcrxrag5wi</option>
-          <option value="three-dee-jzsij8qmbvo">three-dee-jzsij8qmbvo</option>
-          <option value="ui-hppcfhx_xyi">ui-hppcfhx_xyi</option>
-          <option value="generative-inspo">generative-inspo</option>
+          {allCollections.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
         </select>
         <a href="https://github.com/bfollington/amphi">
           <img width={32} height={32} src={github} />
